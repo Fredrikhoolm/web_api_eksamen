@@ -1,0 +1,138 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "EditProfilePage", function () {
+    return EditProfilePage;
+  });
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouter = require("react-router");
+  var _LoadingView = require("./LoadingView");
+  var _InputField = require("./InputField");
+  var _useLoading = require("./useLoading");
+  var _ErrorView = require("./ErrorView");
+  var _jsxFileName = "C:\\Users\\Fredrik Holm Eikrem\\IdeaProjects\\web_api_eksamen\\src\\client\\EditProfilePage.jsx", _s = $RefreshSig$(), _s2 = $RefreshSig$();
+  function EditProfileForm({profile, onSubmit}) {
+    _s();
+    const [firstName, setFirstName] = _react.useState(profile.firstName);
+    const [lastName, setLastName] = _react.useState(profile.lastName);
+    async function submit(e) {
+      onSubmit(e, {
+        firstName,
+        lastName
+      });
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("form", {
+        onSubmit: submit,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19,
+          columnNumber: 13
+        }
+      }, "Edit an existing book (", firstName, ")"), /*#__PURE__*/_reactDefault.default.createElement(_InputField.InputField, {
+        label: "First name",
+        value: firstName,
+        onChangeValue: setFirstName,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_InputField.InputField, {
+        label: "Last name",
+        value: lastName,
+        onChangeValue: setLastName,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 13
+        }
+      }, "Submit"))
+    );
+  }
+  _s(EditProfileForm, "o6ka1AJ6NVzTZkIrJWof+ItENlw=");
+  _c = EditProfileForm;
+  function EditProfilePage({profileApi}) {
+    _s2();
+    const {id} = _reactRouter.useParams();
+    const {data: profile, loading, error, reload} = _useLoading.useLoading(async () => await profileApi.getProfile(id), [id]);
+    async function handleSubmit(e, {firstName, lastName}) {
+      e.preventDefault();
+      await profileApi.updateProfile(id, {
+        firstName,
+        lastName
+      });
+    }
+    if (error) {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement(_ErrorView.ErrorView, {
+          error: error,
+          reload: reload,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 42,
+            columnNumber: 16
+          }
+        })
+      );
+    }
+    if (loading || !profile) {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement(_LoadingView.LoadingView, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 46,
+            columnNumber: 16
+          }
+        })
+      );
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(EditProfileForm, {
+        profile: profile,
+        onSubmit: handleSubmit,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49,
+          columnNumber: 12
+        }
+      })
+    );
+  }
+  _s2(EditProfilePage, "fXM7bVHZo6csuVmAtxpRNEEvw/U=", false, function () {
+    return [_reactRouter.useParams, _useLoading.useLoading];
+  });
+  _c2 = EditProfilePage;
+  var _c, _c2;
+  $RefreshReg$(_c, "EditProfileForm");
+  $RefreshReg$(_c2, "EditProfilePage");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

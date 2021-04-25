@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 
-const profile = [{
+const profileApi = [{
 
         id: 1,
         firstName: "Fredrik",
@@ -27,14 +27,14 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "..", "..", "dist")));
 
 app.get("/api/profilePage", (req, res) => {
-    console.log(profile);
-    res.json(profile);
+    console.log(profileApi);
+    res.json(profileApi);
 })
 
 app.post("/api/profilePage", (req, res) => {
     const {firstName, lastName, year} = req.body;
     console.log(req.body);
-    profile.push({firstName, lastName, year, id: profile.length+1})
+    profileApi.push({firstName, lastName, year, id: profileApi.length + 1})
     res.status(201);
     res.end();
 });

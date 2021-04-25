@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from "react";
 import {LoadingView} from "./LoadingView";
+import {Link} from "react-router-dom";
+import {useLoading} from "./useLoading";
 
-export function ProfileListPage() {
+export function ProfileListPage( {profileApi}) {
     const [profile, setProfile] = useState();
-    const [error, setError] = useState();
+
+    const { data: profilePage, error, loading, reload } = useLoading(
+        async () => await profileApi.listProfile()
+    );
 
     async function loadProfile() {
         try {
@@ -30,11 +35,14 @@ export function ProfileListPage() {
         return <LoadingView/>;
     }
 
-
-    return <>
-        <h1>List Profile</h1>
-        {profile.map(({id, firstName, lastName}) => (
-            <li key={id}>{firstName} {lastName}</li>
-        ))}
-    </>;
+    return (
+        <>
+            <h1>List profile</h1>
+            {profilePage.map(({ id, firstName, lastName}) => (
+                <li key={id}>
+                    <Link to={`/profilePage/${id}/edit`}>{firstName} {lastName}</Link>
+                </li>
+            ))}
+        </>
+    );
 }
