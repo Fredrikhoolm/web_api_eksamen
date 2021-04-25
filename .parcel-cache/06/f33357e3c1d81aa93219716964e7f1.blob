@@ -1,0 +1,144 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "CreateBookPage", function () {
+    return CreateBookPage;
+  });
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _jsxFileName = "C:\\Users\\Fredrik Holm Eikrem\\IdeaProjects\\web_api_eksamen\\src\\client\\CreateBookPage.jsx", _s = $RefreshSig$();
+  function CreateBookPage() {
+    _s();
+    const [title, setTitle] = _react.useState("");
+    const [author, setAuthor] = _react.useState("");
+    const [year, setYear] = _react.useState("");
+    async function submit(e) {
+      e.preventDefault();
+      console.log("Submitting", {
+        title,
+        author,
+        year
+      });
+      fetch("/api/books", {
+        method: "POST",
+        body: JSON.stringify({
+          title,
+          author,
+          year
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("form", {
+        onSubmit: submit,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 12
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22,
+          columnNumber: 9
+        }
+      }, "Create new book"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("label", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 14
+        }
+      }, "Title: ", /*#__PURE__*/_reactDefault.default.createElement("input", {
+        type: "text",
+        value: title,
+        onChange: e => setTitle(e.target.value),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 28
+        }
+      }))), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("label", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 14
+        }
+      }, "Author: ", /*#__PURE__*/_reactDefault.default.createElement("input", {
+        type: "text",
+        value: author,
+        onChange: e => setAuthor(e.target.value),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 29
+        }
+      }))), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("label", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 14
+        }
+      }, "Year: ", /*#__PURE__*/_reactDefault.default.createElement("input", {
+        type: "number",
+        value: year,
+        onChange: e => setYear(e.target.value),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 27
+        }
+      }))), /*#__PURE__*/_reactDefault.default.createElement("button", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26,
+          columnNumber: 9
+        }
+      }, "Submit"))
+    );
+  }
+  _s(CreateBookPage, "2uixu5pVPVBXESnmSV7aY1mSbyE=");
+  _c = CreateBookPage;
+  var _c;
+  $RefreshReg$(_c, "CreateBookPage");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
