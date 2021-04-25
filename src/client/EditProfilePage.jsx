@@ -5,9 +5,9 @@ import { InputField } from "./InputField";
 import { useLoading } from "./useLoading";
 import { ErrorView } from "./ErrorView";
 
-function EditProfileForm({  user, onSubmit }) {
-    const [firstName, setFirstName] = useState(user.firstName);
-    const [lastName, setLastName] = useState(user.lastName);
+function EditProfileForm({  profilePage, onSubmit }) {
+    const [firstName, setFirstName] = useState(profilePage.firstName);
+    const [lastName, setLastName] = useState(profilePage.lastName);
 
 
     async function submit(e) {
@@ -28,7 +28,7 @@ function EditProfileForm({  user, onSubmit }) {
 export function EditProfilePage({ profileApi }) {
     const { id } = useParams();
 
-    const { data: user, loading, error, reload } = useLoading(
+    const { data: profile, loading, error, reload } = useLoading(
         async () => await profileApi.getProfile(id),
         [id]
     );
@@ -42,9 +42,9 @@ export function EditProfilePage({ profileApi }) {
         return <ErrorView error={error} reload={reload} />;
     }
 
-    if (loading || !user) {
+    if (loading || !profile) {
         return <LoadingView />;
     }
 
-    return <EditProfileForm user={user} onSubmit={handleSubmit} />;
+    return <EditProfileForm profile={profile} onSubmit={handleSubmit} />;
 }

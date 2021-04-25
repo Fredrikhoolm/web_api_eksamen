@@ -14,7 +14,7 @@ const profileApi = [{
         id: 1,
         firstName: "Fredrik",
         lastName: "Holm",
-},
+    },
     {
         id: 2,
         firstName: "Håvard",
