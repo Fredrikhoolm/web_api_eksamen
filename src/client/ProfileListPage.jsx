@@ -1,40 +1,40 @@
 import React, {useState, useEffect} from "react";
 import {LoadingView} from "./LoadingView";
 
-export function BookListPage() {
-    const [books, setBooks] = useState();
+export function ProfileListPage() {
+    const [profile, setProfile] = useState();
     const [error, setError] = useState();
 
-    async function loadBooks() {
+    async function loadProfile() {
         try {
-            const res = await fetch("/api/books");
+            const res = await fetch("/api/profilePage");
             if (!res.ok) {
                 throw new Error(`Something went wrong loading ${res.url}: ${res.statusText}`);
             }
 
             const json = await res.json();
-            setBooks(json);
+            setProfile(json);
         } catch (e) {
             setError(e);
         }
     }
 
-    useEffect(loadBooks, []);
+    useEffect(loadProfile, []);
 
     if (error) {
         return <div>Something went wrong</div>;
     }
 
 
-    if (!books) {
+    if (!profile) {
         return <LoadingView/>;
     }
 
 
     return <>
-        <h1>List books</h1>
-        {books.map(({id, title}) => (
-            <li key={id}>{title}</li>
+        <h1>List Profile</h1>
+        {profile.map(({id, firstName}) => (
+            <li key={id}>{firstName}</li>
         ))}
     </>;
 }

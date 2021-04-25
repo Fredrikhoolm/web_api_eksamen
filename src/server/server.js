@@ -3,22 +3,23 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+
 const app = express();
 
 app.use(cors());
 
 
-const books = [{
+const profile = [{
 
         id: 1,
-        title: "Uncle Tom's Cabin",
-        author: "Harriet Stowe",
+        firstName: "Uncle Tom's Cabin",
+        lastName: "Harriet Stowe",
         year: "1852"
 },
     {
         id: 2,
-        title: "Hakkebakkeskogen",
-        author: "Thorbjørn Egner",
+        firstName: "Hakkebakkeskogen",
+        lastname: "Thorbjørn Egner",
         year: "1953"
     }
 
@@ -27,15 +28,15 @@ const books = [{
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "..", "..", "dist")));
 
-app.get("/api/books", (req, res) => {
-    console.log(books);
-    res.json(books);
+app.get("/api/profilePage", (req, res) => {
+    console.log(profile);
+    res.json(profile);
 })
 
-app.post("/api/books", (req, res) => {
-    const {title, author, year} = req.body;
+app.post("/api/profilePage", (req, res) => {
+    const {firstName, lastName, year} = req.body;
     console.log(req.body);
-    books.push({title, author, year, id: books.length+1})
+    profile.push({firstName, lastName, year, id: profile.length+1})
     res.status(201);
     res.end();
 });

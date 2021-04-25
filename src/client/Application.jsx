@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router";
 import { ProfilePage } from "./ProfilePage";
 import * as React from "react";
 import { ChatPage } from "./ChatPage";
-import {BookListPage} from "./BookListPage";
-import {CreateBookPage} from "./CreateBookPage";
+import {ProfileListPage} from "./ProfileListPage";
+import {CreateProfilePage} from "./CreateProfilePage";
 
 export function Application() {
     return (
@@ -27,7 +27,7 @@ export function Application() {
                         </li>
 
                         <li>
-                            <Link to={"/books"}>books</Link>
+                            <Link to={"/profilePage"}>books</Link>
                         </li>
 
                         <li>
@@ -38,11 +38,11 @@ export function Application() {
                 <Route path={"/profile"}>
                     <ProfilePage />
                 </Route>
-                <Route path={"/books"}>
-                    <BookListPage/>
+                <Route path={"/profilePage"}>
+                    <ProfileListPage/>
                 </Route>
                 <Route path={"/create"}>
-                    <CreateBookPage/>
+                    <CreateProfilePage/>
                 </Route>
                 <Route path={"/chat"}>
                     <ChatPage />

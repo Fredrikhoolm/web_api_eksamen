@@ -13,21 +13,21 @@ try {
   var _jsxFileName = "C:\\Users\\Fredrik Holm Eikrem\\IdeaProjects\\web_api_eksamen\\src\\client\\CreateProfilePage.jsx", _s = $RefreshSig$();
   function CreateProfilePage() {
     _s();
-    const [title, setTitle] = _react.useState("");
-    const [author, setAuthor] = _react.useState("");
+    const [firstName, setFirstName] = _react.useState("");
+    const [lastName, setLastName] = _react.useState("");
     const [year, setYear] = _react.useState("");
     async function submit(e) {
       e.preventDefault();
       console.log("Submitting", {
-        title,
-        author,
+        firstName: firstName,
+        lastName: lastName,
         year
       });
-      fetch("/api/books", {
+      await fetch("/api/profilePage", {
         method: "POST",
         body: JSON.stringify({
-          title,
-          author,
+          firstName: firstName,
+          lastName: lastName,
           year
         }),
         headers: {
@@ -67,8 +67,8 @@ try {
         }
       }, "Title: ", /*#__PURE__*/_reactDefault.default.createElement("input", {
         type: "text",
-        value: title,
-        onChange: e => setTitle(e.target.value),
+        value: firstName,
+        onChange: e => setFirstName(e.target.value),
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -91,8 +91,8 @@ try {
         }
       }, "Author: ", /*#__PURE__*/_reactDefault.default.createElement("input", {
         type: "text",
-        value: author,
-        onChange: e => setAuthor(e.target.value),
+        value: lastName,
+        onChange: e => setLastName(e.target.value),
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -133,7 +133,7 @@ try {
       }, "Submit"))
     );
   }
-  _s(CreateProfilePage, "2uixu5pVPVBXESnmSV7aY1mSbyE=");
+  _s(CreateProfilePage, "bvmrM+WDoD1WjtexZ/fA0nuz8Uw=");
   _c = CreateProfilePage;
   var _c;
   $RefreshReg$(_c, "CreateProfilePage");
