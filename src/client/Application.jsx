@@ -14,11 +14,13 @@ export function Application() {
             </header>
             <Switch>
                 <Route path={"/"} exact>
+
                     <h1>Home page</h1>
                     <ul>
                         <li>
                             <Link to={"/profile"}>Profile</Link>
                         </li>
+
                         <li>
                             <Link to={"/chat"}>Chat</Link>
                         </li>
@@ -27,12 +29,13 @@ export function Application() {
                         </li>
 
                         <li>
-                            <Link to={"/profilePage"}>books</Link>
+                            <Link to={"/profilePage"}>List profile</Link>
                         </li>
 
                         <li>
-                            <Link to={"/create"}>create</Link>
+                            <Link to={"/create"}>Create Profile</Link>
                         </li>
+
                     </ul>
                 </Route>
                 <Route path={"/profile"}>

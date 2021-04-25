@@ -33,8 +33,8 @@ export function ProfileListPage() {
 
     return <>
         <h1>List Profile</h1>
-        {profile.map(({id, firstName}) => (
-            <li key={id}>{firstName}</li>
+        {profile.map(({id, firstName, lastName}) => (
+            <li key={id}>{firstName} {lastName}</li>
         ))}
     </>;
 }

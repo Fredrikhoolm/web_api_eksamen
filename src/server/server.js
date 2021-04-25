@@ -12,15 +12,13 @@ app.use(cors());
 const profile = [{
 
         id: 1,
-        firstName: "Uncle Tom's Cabin",
-        lastName: "Harriet Stowe",
-        year: "1852"
+        firstName: "Fredrik",
+        lastName: "Holm",
 },
     {
         id: 2,
-        firstName: "Hakkebakkeskogen",
-        lastname: "Thorbjørn Egner",
-        year: "1953"
+        firstName: "Håvard",
+        lastName: "Nes",
     }
 
 ];
@@ -61,10 +59,9 @@ app.use((req, res, next) => {
     return next();
 });
 
-const server = app.listen(1234, () => {
+const server = app.listen(3000, () => {
     server.on("upgrade", (req, socket, head) => {
         wsServer.handleUpgrade(req, socket, head, (socket) => {
-            // This will pass control to `wsServer.on("connection")`
             wsServer.emit("connection", socket, req);
         });
     });

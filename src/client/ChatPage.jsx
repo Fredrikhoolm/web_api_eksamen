@@ -37,7 +37,7 @@ export function ChatView({ username }) {
     const [ws, setWs] = useState();
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:1234");
+        const ws = new WebSocket("ws://localhost:3000");
         ws.onmessage = (event) => {
             console.log("message", event);
             const { message, id, username } = JSON.parse(event.data);
