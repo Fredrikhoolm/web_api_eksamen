@@ -1,0 +1,244 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "Application", function () {
+    return Application;
+  });
+  var _reactRouterDom = require("react-router-dom");
+  var _reactRouter = require("react-router");
+  require("./ProfilePage");
+  var _react = require("react");
+  var _ChatPage = require("./ChatPage");
+  var _ProfileListPage = require("./ProfileListPage");
+  var _CreateProfilePage = require("./CreateProfilePage");
+  var _http = require("./http");
+  var _EditProfilePage = require("./EditProfilePage");
+  var _jsxFileName = "C:\\Users\\Fredrik Holm Eikrem\\IdeaProjects\\web_api_eksamen\\src\\client\\Application.jsx";
+  function Application() {
+    const profileApi = {
+      listProfile: async () => await _http.fetchJSON("/api/profilePage"),
+      getProfile: async id => await _http.fetchJSON(`/api/profilePage/${id}`),
+      createProfile: async ({firstName, lastName}) => {
+        return _http.postJSON("/api/profilePage", {
+          method: "POST",
+          json: {
+            firstName,
+            lastName
+          }
+        });
+      },
+      updateProfile: async (id, {firstName, lastName}) => await _http.postJSON(`/api/profilePage/${id}`, {
+        method: "PUT",
+        json: {
+          firstName,
+          lastName
+        }
+      })
+    };
+    return (
+      /*#__PURE__*/_react.createElement(_reactRouterDom.BrowserRouter, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_react.createElement("header", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouterDom.Link, {
+        to: "/",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33,
+          columnNumber: 17
+        }
+      }, "Home")), /*#__PURE__*/_react.createElement(_reactRouter.Switch, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        path: "/",
+        exact: true,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38,
+          columnNumber: 21
+        }
+      }, "Home page"), /*#__PURE__*/_react.createElement("ul", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39,
+          columnNumber: 21
+        }
+      }, /*#__PURE__*/_react.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45,
+          columnNumber: 25
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouterDom.Link, {
+        to: "/chat",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46,
+          columnNumber: 29
+        }
+      }, "Chat")), /*#__PURE__*/_react.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48,
+          columnNumber: 25
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouterDom.Link, {
+        to: "/login",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49,
+          columnNumber: 29
+        }
+      }, "Login")), /*#__PURE__*/_react.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 52,
+          columnNumber: 25
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouterDom.Link, {
+        to: "/profilePage",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53,
+          columnNumber: 29
+        }
+      }, "List profile")), /*#__PURE__*/_react.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56,
+          columnNumber: 25
+        }
+      }, /*#__PURE__*/_react.createElement(_reactRouterDom.Link, {
+        to: "/create",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57,
+          columnNumber: 29
+        }
+      }, "Create Profile")))), /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        path: "/profilePage/:id/edit",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement(_EditProfilePage.EditProfilePage, {
+        profileApi: profileApi,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68,
+          columnNumber: 21
+        }
+      })), /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        exact: true,
+        path: "/profilePage",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 71,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement(_ProfileListPage.ProfileListPage, {
+        profileApi: profileApi,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 72,
+          columnNumber: 21
+        }
+      })), /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        path: "/create",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement(_CreateProfilePage.CreateProfilePage, {
+        profileApi: profileApi,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75,
+          columnNumber: 21
+        }
+      })), /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        path: "/chat",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement(_ChatPage.ChatPage, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78,
+          columnNumber: 21
+        }
+      })), /*#__PURE__*/_react.createElement(_reactRouter.Route, {
+        path: "/login",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_react.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 81,
+          columnNumber: 21
+        }
+      }, "Login page"))))
+    );
+  }
+  _c = Application;
+  var _c;
+  $RefreshReg$(_c, "Application");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

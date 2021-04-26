@@ -1,6 +1,5 @@
 import { BrowserRouter, Link } from "react-router-dom";
 import { Route, Switch } from "react-router";
-import { ProfilePage } from "./ProfilePage";
 import * as React from "react";
 import { ChatPage } from "./ChatPage";
 import {ProfileListPage} from "./ProfileListPage";
@@ -68,9 +67,10 @@ export function Application() {
                     <EditProfilePage profileApi={profileApi}/>
                 </Route>
 
-                <Route path={"/profilePage"}>
+                <Route exact path={"/profilePage"}>
                     <ProfileListPage profileApi={profileApi}/>
                 </Route>
+
                 <Route path={"/create"}>
                     <CreateProfilePage profileApi={profileApi}/>
                 </Route>
