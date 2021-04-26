@@ -1,0 +1,93 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "ProfileListPage", function () {
+    return ProfileListPage;
+  });
+  var _react = require("react");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _LoadingView = require("./LoadingView");
+  var _reactRouterDomModulesLink = require("react-router-dom/modules/Link");
+  var _reactRouterDomModulesLinkDefault = _parcelHelpers.interopDefault(_reactRouterDomModulesLink);
+  var _jsxFileName = "C:\\Users\\Fredrik Holm Eikrem\\IdeaProjects\\web_api_eksamen\\src\\client\\ProfileListPage.jsx", _s = $RefreshSig$();
+  function ProfileListPage() {
+    _s();
+    const [profile, setProfile] = _react.useState();
+    const [error, setError] = _react.useState();
+    async function loadProfile() {
+      try {
+        const res = await fetch("/api/profilePage");
+        if (!res.ok) {
+          throw new Error(`Something went wrong loading ${res.url}: ${res.statusText}`);
+        }
+        const json = await res.json();
+        setProfile(json);
+      } catch (e) {
+        setError(e);
+      }
+    }
+    _react.useEffect(loadProfile, []);
+    if (error) {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26,
+            columnNumber: 16
+          }
+        }, "Something went wrong")
+      );
+    }
+    if (!profile) {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement(_LoadingView.LoadingView, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 31,
+            columnNumber: 16
+          }
+        })
+      );
+    }
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37,
+          columnNumber: 13
+        }
+      }, "List profile"), profile.map(({id, firstName}) => /*#__PURE__*/_reactDefault.default.createElement("li", {
+        key: id,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDomModulesLinkDefault.default, {
+        to: `/profilePage/${id}/edit`,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40,
+          columnNumber: 21
+        }
+      }, firstName))))
+    );
+  }
+  _s(ProfileListPage, "bf1L06cAR8gae925AT+OY7oecQs=");
+  _c = ProfileListPage;
+  var _c;
+  $RefreshReg$(_c, "ProfileListPage");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
